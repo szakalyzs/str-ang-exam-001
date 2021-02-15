@@ -1,4 +1,14 @@
 <div class="row">
+  <div class="col-4 offset-2">
+ <form class="form-inline my-2 my-lg-0">
+  <input (keyup)="onChangePhrase($event)" type="text"
+    type="text" class="form-control mr-sm-2"
+        placeholder="Search by name...">
+</form>
+</div>
+</div>
+
+<div class="row">
   <div class="col-8 offset-2">
     <table class="table table-striped">
       <thead>
@@ -10,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let hero of heroList | async">
+        <tr *ngFor="let hero of (heroList | async) || [] | filter:phrase:'name'">
           <td>{{ hero.id }}</td>
           <td>{{ hero.name }}</td>
           <td>{{ hero.superPower }}</td>
